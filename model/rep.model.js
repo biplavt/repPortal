@@ -1,19 +1,23 @@
 const utilityModel = require('./utility/utilityModel');
-const config365 = require('../configuration/configHwsSql.config.js');
-
+const config = require('../configuration/configAX2009.js');
 
 
 
 function makeConnection(){
-	var config1 = config365.config;
+	
 	// console.log(config1);
-	 var ourQuery = `SELECT TOP  50 SalesID
-            ,Amount
-            ,createdDate
-            ,CustAccount
-            ,Customer
-            ,SalesStatus
-          FROM dbo.vSalesSummary1 order by createdDate desc`;
+	 var value = '';
+    var ourQuery = `SELECT [SALESID]
+        ,[Amount]
+        ,[createdDate]
+        ,[CUSTACCOUNT]
+        ,[Customer]
+        ,[SALESNAME]
+        ,[RecentPickUp]
+        ,[Status]
+        ,[SF]
+        FROM View_NodeSalesList`;
+    var config1 = config.config;
 
 	return utilityModel.sqlQuery(ourQuery,config1);
 }
