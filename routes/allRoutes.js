@@ -7,12 +7,6 @@ var viewPath = __dirname + '/../public/';
 
 var controller = require('./../controller/rep.controller');
 
-
-
-router.get('/', function (req, res) {
-    res.sendFile(path.resolve(viewPath + "home.html"));
-});
-
-router.route('/makeConnection').get(controller.mConnection);
+router.route('/').get(controller.mConnection);
 
 module.exports = router;
